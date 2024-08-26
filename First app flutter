@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+import 'dart:math';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Name Generator',
+      home: NameGenerator(),
+    );
+  }
+}
+
+class NameGenerator extends StatefulWidget {
+  @override
+  _NameGeneratorState createState() => _NameGeneratorState();
+}
+
+class _NameGeneratorState extends State<NameGenerator> {
+  final _random = Random();
+  final _adjectives = ['new', 'light', 'main', 'gray'];
+  final _nouns = ['stay', 'stream', 'brake', 'pine'];
+
+  String _currentName = '';
+
+  void _generateName() {
+    setState(() {
+      _currentName =
+          '${_adjectives[_random.nextInt(_adjectives.length)]}${_nouns[_random.nextInt(_nouns.length)]}';
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Name Generator'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Your generated name is:',
+              style: TextStyle(fontSize: 24),
+            ),
+            SizedBox(height: 16),
+            Text(
+              _currentName,
+              style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: _generateName,
+              child: Text('Generate New Name'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
