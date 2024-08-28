@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Personal Page',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: PersonalPage(),
+    );
+  }
+}
+
+class PersonalPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('My Personal Page'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            CircleAvatar(
+              radius: 150.0,
+              backgroundImage: NetworkImage(
+                  'https://img.ws.mms.shopee.co.th/62c9918e50c36853d6c3bcb2cb6ef43b'),
+            ),
+            SizedBox(height: 20.0),
+            Text(
+              'ndc',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'canh depchai',
+              style: TextStyle(
+                fontSize: 16.0,
+              ),
+            ),
+            SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.location_on),
+                Text('da nang'),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
